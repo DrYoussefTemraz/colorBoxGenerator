@@ -1,22 +1,27 @@
+//2nd level component
+
 import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 class NewBoxForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { height: "", width: "", color: "" };
+    this.state = { height: "", width: "", color: "" }; //those states passed to the child component Box as props
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(evt) {
     this.setState({
       [evt.target.name]: evt.target.value,
+      //computed property named
     });
   }
   handleSubmit(evt) {
     evt.preventDefault();
     const newBox = { ...this.state, id: uuidv4() };
+    //this will pass upward to the parent component BoxList with the argument newBox
     this.props.createBox(newBox);
+    //reset the form
     this.setState({
       height: "",
       width: "",

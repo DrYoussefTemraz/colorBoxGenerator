@@ -1,3 +1,5 @@
+//Top level component that exported to app.js
+
 import React, { Component } from "react";
 import Box from "./Box";
 import NewBoxForm from "./NewBoxForm";
@@ -10,16 +12,16 @@ class BoxList extends Component {
   }
   remove(id) {
     this.setState({
-      boxes: this.state.boxes.filter(box => box.id !== id)
+      boxes: this.state.boxes.filter((box) => box.id !== id),
     });
   }
   create(newBox) {
     this.setState({
-      boxes: [...this.state.boxes, newBox]
+      boxes: [...this.state.boxes, newBox],
     });
   }
   render() {
-    const boxes = this.state.boxes.map(box => (
+    const boxes = this.state.boxes.map((box) => (
       <Box
         key={box.id}
         id={box.id}
